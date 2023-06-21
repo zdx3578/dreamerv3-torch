@@ -9,6 +9,7 @@ class MemoryMaze:
         if task == "9x9":
             self._env = gym.make("memory_maze:MemoryMaze-9x9-v0")
         elif task == "15x15":
+            print('MemoryMaze env: 15x15')
             self._env = gym.make("memory_maze:MemoryMaze-15x15-v0")
         else:
             raise NotImplementedError(task)
