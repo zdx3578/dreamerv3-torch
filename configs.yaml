@@ -190,28 +190,30 @@ MemoryMaze:
 
 MemoryMazeStpn:
   prefill: 3000
-  batch_size: 16
-  batch_length: 64
-  eval_episode_num: 5
-  dyn_hidden: 192 #same deter ???
-  dyn_deter: 192
+  batch_size: 32
+  batch_length: 128
+  eval_episode_num: 10
+  dyn_hidden: 32 #same deter ???
+  dyn_deter: 32
   dyn_cell: 'stpn'
   steps: 1e6
-  action_repeat: 2
+  action_repeat: 3
+  time_limit: 2700
   actor_dist: 'onehot'
   imag_gradient: 'reinforce'
   task: 'MemoryMaze_9x9'
 
 MemoryMazeStpnDebug:
   prefill: 3010
-  batch_size: 16
-  batch_length: 64
+  batch_size: 32
+  batch_length: 128
   eval_episode_num: 10
-  dyn_hidden: 92 #same deter ???
-  dyn_deter: 92
+  dyn_hidden: 32 #same deter ???
+  dyn_deter: 32
   dyn_cell: 'stpn'
   steps: 1e6
-  action_repeat: 2
+  action_repeat: 3
+  time_limit: 2700
   actor_dist: 'onehot'
   imag_gradient: 'reinforce'
   task: 'MemoryMaze_15x15'
