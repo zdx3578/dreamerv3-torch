@@ -374,16 +374,15 @@ def main(config):
     while agent._step < config.steps:
         logger.write()
 
-        print("Start training.")
-        state = tools.simulate(agent, train_envs, config.eval_every, state=state)
-        torch.save(agent.state_dict(), logdir / "latest_model.pt")
-
         print("Start evaluation.")
         eval_policy = functools.partial(agent, training=False)
         tools.simulate(eval_policy, eval_envs, episodes=config.eval_episode_num)
         if config.video_pred_log:
-            video_pred = agent._wm.video_pred(next(eval_dataset), self._config.batch_size)
+            video_pred = agent._wm.video_pred(next(eval_dataset), config.batch_size)
             logger.video("eval_openl", to_np(video_pred))
+        print("Start training.")
+        state = tools.simulate(agent, train_envs, config.eval_every, state=state)
+        torch.save(agent.state_dict(), logdir / "latest_model.pt")
 
     for env in train_envs + eval_envs:
         try:
